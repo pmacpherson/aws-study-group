@@ -83,8 +83,11 @@ Advanced | Use AWS Cloudformation
 * What is AWS Lambda?
 * What languages are supported by AWS Lambda?
 * What is the Handler for your function?
+* What is the structure of a node Lambda?  
+* What are the three variables event, context, callback, used for?
 * What type of events can S3 monitor?
 * What AWS Services can S3 events be sent to?
+* What is the payload format for the S3 event to lambda?
 
 
 
