@@ -1,3 +1,14 @@
+# Important information
+
+Important communications will be via:
+
+* Google Drive https://goo.gl/RBbeYX
+* Github Readme files.  
+* Slack channel
+
+Please ensure you are kept up to date and when in doubt, use common sense.
+
+
 # AWS Study Group
 
 An informal weekly study group where a group of individuals get together to study a common topic, in this case Amazon Web Services.
