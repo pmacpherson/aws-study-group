@@ -5,7 +5,7 @@ Create a static website hosted within AWS S3 with access logs and version contro
 
 
 ### Upload files to S3
-* Create a new S3 bucket to store public files. eg 2017-pmacpherson-public
+* Using AWS Console, create a new S3 bucket to store public files. eg 2017-pmacpherson-public
 * Upload the files from "site" folder
 * Open index.html in your browser from the S3 bucket
 * Play with permissions to make this file public and private.
