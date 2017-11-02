@@ -1,4 +1,4 @@
-# Important information
+# Communications
 
 Important communications will be via:
 
