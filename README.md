@@ -1,6 +1,6 @@
 # Communications
 
-Important communications will be via:
+Important communications via:
 
 * Google Drive https://goo.gl/RBbeYX
 * Github Readme files.  
