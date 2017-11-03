@@ -58,8 +58,8 @@ In lambda_source folder:
 	* Create new test event
 	* Event Template: Hello World
 	* Event Name: TestS3Resize
-		* Body: copy the json from lambda_source/test.json into this area
-	   * Create
+	* Body: copy the json from lambda_source/test.json into this area
+	* Create
 * Now hit "Test"
 * Read the Log Output from the test, notice it reads "AccessDenied: Access Denied"
 
