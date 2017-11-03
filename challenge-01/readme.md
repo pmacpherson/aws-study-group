@@ -15,6 +15,7 @@ Create a static website hosted within AWS S3 with access logs and version contro
 * Create a new S3 bucket to host access logs.  eg 2017-pmacpherson-logs
 * Modify the public S3 bucket by enabling Server access logging using your log bucket.  
 https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html
+* Note: Logs are not real-time, so it may take some time before they arive
 * Sample Logging content:
 3f9d4b274c80cb78abd52c27b5d2d836b20156fdd752880e6d3fc8d5183ca854 tricia-test [27/Oct/2017:02:22:59 +0000] 135.23.65.186 arn:aws:iam::199462013949:user/pmacpherson 9AD486EE58277690 REST.GET.LOGGING_STATUS - "GET /tricia-test?logging= HTTP/1.1" 200 - 241 - 50 - "-" "S3Console/0.4, aws-internal/3" -
 

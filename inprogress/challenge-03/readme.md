@@ -1,98 +1,103 @@
-Challenge 03 - AWS Lambda, Amazon DynamoDB, CloudWatch Events
+Challenge 03 - AWS Lambda
 ==================
 
-Create a lambda function that is executed every minute and writes an entry to a dynamodb table.
+Create hello world lamdba function with numerous versions and an alias.
 
 ### Create AWS Lambda function:
-* Using AWS Console, create a new lamdba function from scratch:
-   * Name: helloWorld
-   * Role: Create Custom Role
-      * Iam Role: Create new IAM Role
-      * Role Name: lambda_hello_world_execution
-      * Allow
-    * Create Function
-* Modify inline content and output "Hello World" to the console.  eg console.log("Hello World")
-* Test the lambda and review the logs and verify output is displayed
+* In AWS Console, Create new lambda function from scratch
+	* Name: hello-world
+	* Role: Create Custom Role
+    	* Iam Role: Create new IAM Role
+    	* Role Name: lambda_basic_execution
+    	* Allow
+	* Existing Role: lambda_basic_execution
+	* Create Function
+* Modify inline content to spit out console.log("Hello world")
+* Save
 
-### Schedule Lambda Execution:
-* Add a new trigger on the lambda by creating a Cloudwatch Events that will execute every minute.
-* Review the execution logs for the lambda function under CloudWatch > Logs > HelloWorld
-* Confirm execution is happening every mintue
+#### Test your lambda function.  
+* Click "Select a test event" > Configure Test Events
+	* Create new test event
+	* Event Template: Hello World
+	* Event Name: test1
+	* Body: Leave defaults
+	* Create
+* Now hit "Test"
+* Read the Log Output from the test.  Should see "Hello World"
+* Look at logs under cloudwatch "Click here" link will take you there.  Multiple browser tabs/windows will be helpful here as we flip flop.
+* Run test a few more times, confirm cloudwatch logs get updated. (Almost real time delivery)
+* Note, cloudwatch logs will also create new log files periodically under the log group
+
+#### Publish version of Lambda
+* Actions > Publish new Version
+	* Version description: v1
 
 
-### Lambda Publish Version
-* In AWS Console, locate lambda function and publish a Version
-* Give a unique name, such as today's date
-* Find previous versions and alias
-* Notice the $LATEST version
-* Make some changes to the lambda function and create a few different versions.
+#### Download Lambda function
+* Actions > Export Function > Download Deployment Package
+	* This is a zip file.  If your operating system does not recognize the file, simply add a .zip extension to the filename 
+	* Extract the file
+* Read the index.js file
+* Understand the handler definition: event, context and callback
+* http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html
 
 
-### Create DynamoDB Table
-* Create dynamo db table
-   * Table Name: helloWorld
-   * Primary Key: date / number 
-      * This will be the primary key for the table.  Not ideal for production environments, but adequate for this challenge
-   * Create the table 
-* Wait for table to be properly created and confirm schema structure contains one field named "date"
-
-### Download Lambda Function:
-* Export the lambda function using Actions > Export Function 
-* Download Deployment package and save to your local environment
-* Unzip the file
-
-### Modify Lambda function
-* Open the index.js file locally
-* Add dependencies for aws-sdk
+#### Modify And Package Lambda function
+* Modify the index.js file to contain the following lines:
 ```
-const AWS = require('aws-sdk');
-const docClient = new AWS.DynamoDB.DocumentClient();
-exports.handler = (event, context, callback) => {
-	var record = {
-		Item: {
-			date: Date.now(),
-			message: "Hello, beautiful"
-		},
-		TableName: 'helloWorld'
-	}
-	docClient.put(record, function(err, data) {
-		if (err) {
-			callback(err, null);
-		} else {
-			callback(null, data);
-		}
-	})
-};
+   console.log("name = " + event.name);
+   console.log("email = " + event.email);  
 ```
-* Create new deployment zip package with index.js
-* Update the helloWorld with the deployment package
+* Archive index.js back into a new zip file.
+* Note: Ensure index.js is the root level of your zip file and not under a subdirectory.
+
+#### Upload package
+In AWS Console:
+
+* Upload package to the "hello-world" lambda 
+	* Code entry type: Upload and choose file
+	* Runtime: Node 6.10
+	* Handler: index.handler (note this is the name of the index.js)
+	* Save
+
+#### Test your lambda function.  
+* Edit the "test1" event changing the body to the following:
+```
+{
+    "name":"Patricia", 
+    "email":"pmacpherson@klick.com"
+}
+```
+* Save and test
+* Read the Log Output from the test
 
 
-### Test lambda function
-* Try testing lambda function.
-* Should receive error.  What is the error?
+#### Publish new version of Lambda
+* Publish a new lambda version: v2
 
-### Grant DynamoDB Access
-* Locate lambda role created above in IAM > Roles
-* Add inline policy
-   * Policy Generator
-      * Effect: Allow
-      * AWS Service: Amazon DynamoDB
-      * Actions: All
-      * ARN: The ARN of the DynamoDB table created above (See this on the DynamoDB table details)
-    * Next and Apply
-    * Review newly generated policy on role
+#### View and test previous versions
+* Toggle the Versions: $Latest between V1, V2 and $Latest.
+* Run test on all of them
 
-### Test lambda function
-* Try testing lambda function.
-* Should be successful
-* Check dynamodb to see newly generated records
+#### Create Alias
+* Actions > Create Alias
+	* Name: prod
+	* Description: production tag
+	* Version: v1
+* Update Alias to $Latest
+* http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html
+
 
 ### Teardown
-* Delete CloudWatch Event Rule
-* Delete Lambdas
-* Delete Logs under CloudWatch for Lambda
-* Delete DynamoDB
+* Delete Lambda
+* Delete Cloudwatch Logs
+* Delete Role
+
+# Additional Resources
+* https://www.slideshare.net/ErikPaulsson/aws-iam-and-security
+* http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-upload-deployment-pkg.html
+* http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html
+
 
 ### Challenge Difficulty 
 Skill | Use
@@ -104,19 +109,11 @@ Advanced | Use AWS Cloudformation
 ### Questions:
 
 * What is AWS Lambda?
-* What are a few ways a lambda function can be triggered?
-* What schedule syntax does CloudWatch Events use?
-* What is AWS DynamoDB?
-* What type of database is DynamoDB?
-* What permissions are required to make a DynamoDB writable?
-* What is an ARN?
-
-
-### Extra Resources
-http://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html
-http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/dynamodb-example-table-read-write.html
-https://www.youtube.com/watch?v=G_-aEXmluq8
-
+* What languages are supported by AWS Lambda?
+* What is the code structure of a node Lambda function?
+* What are the three variables: event, context, and callback used for?
+* What is a Version?  What is it's purpose?
+* What is an Alias?  What is it's purpose?
 
 
 
