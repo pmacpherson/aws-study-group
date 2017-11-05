@@ -1,30 +1,17 @@
-Challenge 06 - AWS S3, AWS Lambda, Amazon DynamoDB, API Gateway
+Challenge 06 - An Introduction to API Gateway
 ==================
 
-Create a guestbook application hosted on S3, using Lambda, DynamoDB and API Gateway.
-
-### Create DynamoDB table
-* Create a dynamoDB table named "guestbook" with the fields:
-   * Name
-   * Email
-   * Message
-   * Date
-
-### Create AWS S3 static website
-* Create a s3 static website that displays a form with the same fields as the DynamoDB table
+Hello World with API Gateway
+* http://www.bogotobogo.com/DevOps/AWS/aws-Lambda-Nodejs-API-Gateway.php
 
 ### Create AWS Lambda
 * Create an node lambda file 
+- get returns 'hello world'
 
-- create api gateway to post form to dynamodb
-- create api gateway to list records from dynamodb
-- create api gateway to edit record from dynamodb
+* http://docs.aws.amazon.com/apigateway/latest/developerguide/integrating-api-with-aws-services-lambda.html
+* http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html
 
-
-http://docs.aws.amazon.com/apigateway/latest/developerguide/integrating-api-with-aws-services-lambda.html
-
-
-
+### create api gateway
 
 ### Teardown
 * Delete Lambdas
@@ -42,13 +29,8 @@ Advanced | Use AWS Cloudformation
 
 ### Questions:
 
-* What is AWS Lambda?
+* What is AWS Api Gateway?
 * What are a few ways a lambda function can be triggered?
-* What schedule syntax does CloudWatch Events use?
-* What is AWS DynamoDB?
-* What type of database is DynamoDB?
-* What permissions are required to make a DynamoDB writable?
-* What is an ARN?
 
 
 

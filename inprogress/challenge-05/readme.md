@@ -1,4 +1,4 @@
-Challenge 05 - AWS Lambda, Amazon DynamoDB, CloudWatch Events
+Challenge 05 - An Introduction to Amazon DynamoDB and CloudWatch Events
 ==================
 
 Create a lambda function that is executed every minute and writes an entry to a dynamodb table.
@@ -9,7 +9,7 @@ Create a lambda function that is executed every minute and writes an entry to a 
 	* new execution role: lambda_hello_dynamodb_execution
 * Upload package created above with:
 	* Handler: CreateThumbnail.handler (note this is the name of the CreateThumbnail.js)
-* Modify inline content and output "Hello World" to the console.  eg console.log("Hello World")
+* Modify inline content and output "Hello DynamoDB" to the console.  eg console.log("Hello DynamoDB")
 * Test the lambda and review the logs and verify output is displayed
 
 ### Schedule Lambda Execution:
@@ -97,8 +97,8 @@ https://www.youtube.com/watch?v=G_-aEXmluq8
 
 ### Questions:
 
-* What is AWS Lambda?
 * What are a few ways a lambda function can be triggered?
+* What is CloudWatch Event?
 * What schedule syntax does CloudWatch Events use?
 * What is AWS DynamoDB?
 * What type of database is DynamoDB?

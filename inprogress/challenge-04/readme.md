@@ -1,7 +1,7 @@
-Challenge 04 - AWS CLI, AWS Lambda, AWS S3 Events
+Challenge 04 - Resizing images with S3 Events
 ==================
 
-Using an image resize lambda (provided below), automatically create new resized images whenever files are uploaded into an S3 source bucket.
+Using a lambda (provided below), automatically create resized images whenever files are uploaded into an S3 source bucket.
 
 ### Upload files into S3:
 Using the AWS CLI:
@@ -14,10 +14,10 @@ Using the AWS CLI:
 
 ### Create AWS Lambda function:
 
-* Under lambda_source, there is a CreateThumbnail.js file.  Package this file into a Lambda function and upload it to AWS.  
-* Take a look at this file but don't worry if it doesn't make much sense right now.
-* http://docs.aws.amazon.com/lambda/latest/dg/get-started-create-function.html
-     
+* Under lambda_source, there is a CreateThumbnail.js file.  Package this file into a Lambda function and upload it to AWS.
+* See if you can understand the code.  
+* Don't be discouraged if you can't.  It's a bit complicated!
+
 #### Create lambda deployment package
 
 * You will need node installed on your machine.  
@@ -89,6 +89,7 @@ In AWS Console or CLI:
 # Additional Resources
 * https://www.slideshare.net/ErikPaulsson/aws-iam-and-security
 * http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-upload-deployment-pkg.html
+* http://docs.aws.amazon.com/cli/latest/reference/lambda/
 
 
 ### Challenge Difficulty 
@@ -100,18 +101,11 @@ Advanced | Use AWS Cloudformation
 
 ### Questions:
 
-* What is AWS Console?
-* What is an IAM Role?  What is it's purpose?
 * What permissions does the IAM Role require in order to create new files in S3?
-* What is AWS Lambda?
-* What languages are supported by AWS Lambda?
-* What is the purpose of Handler for your lambda function?
-* What is the code structure of a node Lambda function?
-* What are the three variables: event, context, and callback used for?
 * What type of events can S3 monitor?
 * What AWS Services can S3 events be sent to?
 * What is the payload format for the S3 event to lambda?
-
+* Besides resizing images, what are some other ideas for S3 Events?
 
 
 

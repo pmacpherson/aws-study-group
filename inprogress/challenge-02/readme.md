@@ -1,8 +1,8 @@
-Challenge 02 - AWS IAM, CLI, S3
+Challenge 02 - Intro to AWS CLI
 ==================
 
-Configure AWS CLI using multiple profiles.
-Using aws cli, programmatically create/delete S3 buckets
+Configure AWS CLI with multiple profiles.
+Programmatically create/delete S3 buckets from command line.
 
 
 ### Confirm Root Account is Secure
@@ -27,6 +27,7 @@ Your root account is the most important account and must be protected at all cos
 	* Create User
 	* Copy both the Access Key and the Secret Access Key.
 	* If you do not copy these keys now, you will not be able to retrive them later.
+* http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
 
 ### Configure AWS Profiles
 * If you've used CLI in the past, you can choose to skip this part (or backup your ~/.aws folder) as the following will delete your default profile
@@ -41,6 +42,9 @@ Your root account is the most important account and must be protected at all cos
 		* Windows: C:\User\username\\.aws
 * Run: aws iam get-user
 	* Should receive access denied
+* https://www.cloudassessments.com/blog/configuring-the-aws-command-line-interface/
+* http://docs.aws.amazon.com/cli/latest/userguide/cli-config-files.html
+
 
 ### Configure Permissions for IAM User
 * Using AWS Console, apply Get-User permissions
@@ -66,8 +70,13 @@ Your root account is the most important account and must be protected at all cos
 	* Grant IAM::GetUser permission
 	* Run: aws configure --profile profile2
 	* Review ~/.aws/ files
-	* Run: aws iam get-user
-	* Run: aws iam get-user --profile profile2
+
+### Run multiple AWS Profiles
+* Run: aws iam get-user
+* Run: aws iam get-user --profile profile2
+
+### Run multiple outputs
+* Run: aws iam get-user --output text/json/table
 
 
 ### Grant S3 access to AWSStudyGroupUser user
@@ -100,6 +109,7 @@ Using the AWS CLI:
 	* teardown.sh
 		* deletes bucket
 * Try running setup or teardown twice in a row.  What happens?
+* Note, after deleting an S3 bucket, the bucket name is not immediately available for reuse.
 
 ### Teardown
 * Delete S3 buckets
@@ -109,9 +119,10 @@ Using the AWS CLI:
 * Watch IAM Best Practices: https://youtu.be/_wiGpBQGCjU
 
 # Additional Resources
-* https://www.slideshare.net/ErikPaulsson/aws-iam-and-security
 * http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html
+* http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 * http://docs.aws.amazon.com/cli/latest/reference/
+* https://www.slideshare.net/ErikPaulsson/aws-iam-and-security
 
 
 ### Challenge Difficulty 
@@ -125,6 +136,7 @@ Advanced | Use AWS Cloudformation
 
 * What is IAM? Users? Roles? Policies?
 * What is the difference between Existing Policies and Inline Policies?
+* What is an ARN?
 * Why is root account so important?
 * What are some ways to keep root account secure?
 * What is AWS Console?
@@ -133,6 +145,7 @@ Advanced | Use AWS Cloudformation
 * What are some benefits of using CLI?
 * What are some pitfalls of using CLI?
 * What are a few commands you can use to copy assets to an S3 bucket?
+* What are the various output formats a command can have?
 
 
 
