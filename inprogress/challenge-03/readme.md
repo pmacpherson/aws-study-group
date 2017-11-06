@@ -4,94 +4,53 @@ Challenge 03 - An Introduction to AWS Lambda
 Create hello world lamdba function with numerous versions and a "prod" alias.
 
 ### Create AWS Lambda function:
-* In AWS Console, Create new lambda function from scratch
-	* Name: hello-world
-	* Role: Create Custom Role
-    	* Iam Role: Create new IAM Role
-    	* Role Name: lambda_basic_execution
-    	* Allow
-	* Existing Role: lambda_basic_execution
-	* Create Function
-* Modify inline content to spit out console.log("Hello world")
-* Save
+Create new lambda function from scratch called "hello-world" using a custom role "lambda_basic_execution"
+
+Modify inline content to spit out console.log("Hello world")
 
 #### Test your lambda function.  
-* Click "Select a test event" > Configure Test Events
-	* Create new test event
-	* Event Template: Hello World
-	* Event Name: test1
-	* Body: Leave defaults
-	* Create
-* Now hit "Test"
-* Read the Log Output from the test.  Should see "Hello World"
+Configure a test event to trigger the lambda.
+
+* Read the Log Output from the test to confirm console output.
 * Look at logs under cloudwatch "Click here" link will take you there.  
-* Multiple browser tabs/windows will be helpful here as we flip flop.
-* Run test a few more times, confirm cloudwatch logs get updated. (Almost real time delivery)
-* Note, cloudwatch logs will also create new log files periodically under the log group
 
 #### Publish version of Lambda
-* Actions > Publish new Version
-	* Version description: v1
-
+Create a new version of the lambda: Actions > Publish new Version
 
 #### Download Lambda function
-* Actions > Export Function > Download Deployment Package
-	* This is a zip file.  If your operating system does not recognize the file, simply add a .zip extension to the filename 
-	* Extract the file
-* Read the index.js file
-* Understand the handler definition: event, context and callback
-	* http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html
+Download and open the lambda function locally.  
+
+Actions > Export Function > Download Deployment Package
+* This is a zip file.  If your operating system does not recognize the file, simply add a .zip extension to the filename 
+* http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html
 
 
-#### Modify And Package Lambda function
-* Modify the index.js file to contain the following lines:
-```
-   console.log("name = " + event.name);
-   console.log("email = " + event.email); 
-   console.log("Hello " + event.name);
-```
-* Archive index.js back into a new zip file.
-* Note: Ensure index.js is the root level of your zip file and not under a subdirectory.
-
-#### Upload package
-In AWS Console:
-
-* Upload package to the "hello-world" lambda 
-	* Code entry type: Upload and choose file
-	* Runtime: Node 6.10
-	* Handler: index.handler (note this is the name of the index.js)
-	* Save
-
-#### Test your lambda function.  
-* Edit the "test1" event changing the body to the following:
+#### Modify Lambda
+Assuming the event object will now recieve the following object:
 ```
 {
     "name":"Patricia", 
     "email":"pmacpherson@klick.com"
 }
 ```
-* Save and test
-* Read the Log Output from the test
+* Modify the index.js file to output name and email
+
+#### Package Lambda function
+Archive files back into a new zip file. Note: Ensure index.js is the root level of your zip file and not under a subdirectory.
+
+#### Upload package
+In AWS Console, Upload new package from zip
+
+#### Test your lambda function.  
+Modify test event with new sample data
 
 #### Add error handling
-* Add error handling to verify name and email exists
-* Return errors if they do not.
-* Test various cases and see if lambda execution handles them properly
+Add error handling to verify name and email exists.  Return errors if they do not.  Test various cases and see if lambda execution handles them properly
 
 #### Publish new version of Lambda
-* Publish a new lambda version: v2
-
-#### View and test previous versions
-* Toggle the Versions: $Latest between V1, V2 and $Latest.
-* Run test on all of them
-
-#### Create Alias
-* Actions > Create Alias
-	* Name: prod
-	* Description: production tag
-	* Version: v1
-* Update Alias to $Latest
+After each change, publish a new lambda version.  Learn how to toggle and test between newer and older versions.  Create an alias and point it various versions
 * http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html
+
 
 ### Teardown
 * Delete Lambda
