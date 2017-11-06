@@ -33,13 +33,10 @@ Assuming the event object will now recieve the following object:
     "email":"pmacpherson@klick.com"
 }
 ```
-* Modify the index.js file to output name and email
+Modify the index.js file to output name and email
 
-#### Package Lambda function
-Archive files back into a new zip file. Note: Ensure index.js is the root level of your zip file and not under a subdirectory.
-
-#### Upload package
-In AWS Console, Upload new package from zip
+#### Package and Upload Lambda function
+Archive files back into a new zip file. Ensure index.js is the root level of your zip file and not under a subdirectory.  Replace existing lambda by uploading new package from zip.
 
 #### Test your lambda function.  
 Modify test event with new sample data
