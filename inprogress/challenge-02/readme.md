@@ -19,24 +19,16 @@ Your root account is the most important account and must be protected at all cos
 
 
 ### Create New User
-* Using AWS Console, Create new IAM User
-	* Name: AWSStudyGroupUser
-	* Access Type: Programmatic Access
-	* Next
-	* Ignore permissions for now, Click Next
-	* Create User
-	* Copy both the Access Key and the Secret Access Key.
-	* If you do not copy these keys now, you will not be able to retrive them later.
+* Using AWS Console, Create a new IAM User named "AWSStudyGroupUser" with only "Programmatic Access".
+* Download both the Access Key and the Secret Access Key.
+* If you do not copy these keys now, you will not be able to retrive them later.
 * http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
 
 ### Configure AWS Profiles
 * If you've used CLI in the past, you can choose to skip this part (or backup your ~/.aws folder) as the following will delete your default profile
+
 * Using AWS CLI, Create default profile
-	* run: aws configure
-		* Access Key: copied from step above
-		* Secret Access Key: copied from step above
-		* Default Region: us-east-1
-		* Default output: json
+	* run: aws configure using "us-east-1" for region and "json" for output
 	* Open 2 files in text editor on your local machine under:
 		* OSX: ~/.aws or 
 		* Windows: C:\User\username\\.aws
@@ -47,17 +39,8 @@ Your root account is the most important account and must be protected at all cos
 
 
 ### Configure Permissions for IAM User
-* Using AWS Console, apply Get-User permissions
-	* IAM > User > AWSStudyGroupUser > Click on "Add inline policy"
-	* Use Policy Generator:
-		* Effect: Allow
-		* AWS Service: AWS Identity And Access Management
-		* Actions: GetUser
-		* ARN: *
-		* Add Statement
-		* Next
-		* Validate Policy
-		* Apply Policy
+* Add an "inline policy" to the new user.
+* Using the Policy Generator, using the "AWS Identity And Access Management" service, allows GetUser permission for all ARN's
 * Review new policy json added to AWSStudyGroupUser user
 * Run: aws iam get-user
 	* Should receive success, although it might take a minute or two before it's updated.
@@ -65,26 +48,17 @@ Your root account is the most important account and must be protected at all cos
 
 ### Create multiple AWS Profiles
 * Repeat the steps from "Create New User" downwards, however, use "aws configure --profile profile2"
-	* Create IAM User: AWSStudyGroupUser2
-	* Save Access and Secret Access Keys
-	* Grant IAM::GetUser permission
 	* Run: aws configure --profile profile2
-	* Review ~/.aws/ files
+* Review ~/.aws/ files
 
-### Run multiple AWS Profiles
-* Run: aws iam get-user
-* Run: aws iam get-user --profile profile2
-
-### Run multiple outputs
-* Run: aws iam get-user --output text/json/table
+### AWS CLI Options
+* --profile [name] - switch allows you to run any cli command with different profiles
+* --output text/json/table - switch allows you to control the output format
 
 
 ### Grant S3 access to AWSStudyGroupUser user
-* IAM > User > AWSStudyGroupUser > Add Permissions
-	* Attach Existing Polices directly
-	* Search for "AmazonS3"
-	* Apply permission "AmazonS3FullAccess"
-* Review new policy json added to AWSStudyGroupUser user
+* Add a permission using the managed policy "AmazonS3FullAccess" to the users
+* Review new policy json added to the users
 
 ### Create S3 Bucket and transfer files
 Using the AWS CLI:
