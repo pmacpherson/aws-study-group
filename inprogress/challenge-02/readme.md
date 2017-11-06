@@ -8,15 +8,15 @@ Programmatically create/delete S3 buckets from command line.
 ### Confirm Root Account is Secure
 Your root account is the most important account and must be protected at all costs.
 
-* Confirm there are no access keys under Security credentials for your root user
-* If there are, consider removing the access keys.  
-* Confirm CLI is not using your root account.
-* Read best practice on root accounts 
-* http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html
+Confirm there are no access keys under Security credentials for your root user.  If there are, consider removing the access keys.  
+
+Confirm CLI is not using your root account.
+
+Read best practice on root accounts: http://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html
 
 
 ### Create New User
-Using AWS Console, Create a new IAM User named "AWSStudyGroupUser" with only "Programmatic Access".  Download both the Access Key and the Secret Access Key. If you do not copy these keys now, you will not be able to retrive them later.
+Using AWS Console, create a new IAM User named "AWSStudyGroupUser" with only "Programmatic Access".  During the process, download both the Access Key and the Secret Access Key. If you do not save these keys, you will not be able to retrieve them later.
 * http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
 
 ### Configure AWS Profiles
@@ -66,19 +66,18 @@ Using the AWS CLI:
 * delete bucket 
 
 * http://docs.aws.amazon.com/cli/latest/reference/s3/index.html
-* http://docs.aws.amazon.com/cli/latest/reference/s3/mb.html
-* http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html
-* http://docs.aws.amazon.com/cli/latest/reference/s3/sync.html
 
 ### Programmatically setup and teardown buckets
-* Create bash or powershell scripts using commands above:
-	* setup.sh
-		* creates bucket
-		* upload files folder
-	* teardown.sh
-		* deletes bucket
-* Try running setup or teardown twice in a row.  What happens?
-* Note, after deleting an S3 bucket, the bucket name is not immediately available for reuse.
+Programmatically setup S3 buckets by creating bash or powershell scripts.
+* setup.sh
+	* creates bucket
+	* upload files folder
+* teardown.sh
+	* deletes bucket
+
+Try running setup or teardown twice in a row.  What happens?
+
+Note, after deleting an S3 bucket, the bucket name is not immediately available for reuse.
 
 ### Teardown
 * Delete S3 buckets
