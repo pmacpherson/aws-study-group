@@ -17,6 +17,7 @@ Read best practice on root accounts: http://docs.aws.amazon.com/IAM/latest/UserG
 
 ### Create New User
 Using AWS Console, create a new IAM User named "AWSStudyGroupUser" with only "Programmatic Access".  During the process, download both the Access Key and the Secret Access Key. If you do not save these keys, you will not be able to retrieve them later.
+
 * http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
 
 ### Configure AWS Profiles
@@ -25,9 +26,7 @@ If you've used CLI in the past, you can choose to skip this part (or backup your
 Using AWS CLI, Create default profile
 
 * run: aws configure using "us-east-1" for region and "json" for output
-* Open 2 files in text editor on your local machine under:
-	* OSX: ~/.aws or 
-	* Windows: C:\User\username\\.aws
+* View 2 aws configuration files under ~/.aws (OSX) or C:\User\username\\.aws (Windows)
 * Run: aws iam get-user
 	* Should receive access denied
 * https://www.cloudassessments.com/blog/configuring-the-aws-command-line-interface/
@@ -35,19 +34,22 @@ Using AWS CLI, Create default profile
 
 
 ### Configure Permissions for IAM User
-Add an "inline policy" to the new user and use the Policy Generator, using the "AWS Identity And Access Management" service and allow GetUser permission
+Add the IAM GetUser permission to the new User by adding an "inline policy" and Policy Generator
+Review the new policy json added to AWSStudyGroupUser user.
 
-* Review new policy json added to AWSStudyGroupUser user
 * Run: aws iam get-user
 	* Should receive success, although it might take a minute or two before it's updated.
 
 
 ### Create multiple AWS Profiles
 Create another account AWSStudyGroupUser2, however, use "aws configure --profile profile2"
+
 * Run: aws configure --profile profile2
 * Review ~/.aws/ files
 
 ### AWS CLI Options
+Play around with the --profile and --output switches on the CLI.
+
 * --profile [name] - switch allows you to run any cli command with different profiles
 * --output text/json/table - switch allows you to control the output format
 
@@ -69,6 +71,7 @@ Using the AWS CLI:
 
 ### Programmatically setup and teardown buckets
 Programmatically setup S3 buckets by creating bash or powershell scripts.
+
 * setup.sh
 	* creates bucket
 	* upload files folder

@@ -14,25 +14,19 @@ Using the AWS CLI:
 
 ### Create AWS Lambda function:
 
-* Under lambda_source, there is a CreateThumbnail.js file.  Package this file into a Lambda function and upload it to AWS.
-* See if you can understand the code.  
-* Don't be discouraged if you can't.  It's a bit complicated!
+Under lambda_source, there is a CreateThumbnail.js file.  Package this file into a Lambda function and upload it to AWS.  
+
+See if you can understand the code.  Don't be discouraged if you can't.  It's a bit complicated!
 
 #### Create lambda deployment package
 
-* You will need node installed on your machine.  
-* If you do not have node installed, you can skip this part and use the zip package in lambda_package
+You will need node installed on your machine.  If you do not have node installed, you can skip this part and use the zip package in lambda_package
 
-In lambda_source folder:
-
-* Run: npm init  (Leave all defaults and Create package.json)
-* Install dependencies, run: npm install async gm --save
-* Confirm dependencies are added to package.json (should see async and gm added to package.json)
-* Once complete, you should now have:
-	* CreateThumbnail.js
-	* /node_modules/*
-* Zip the CreateThumbnail.js file and the node_modules folder as CreateThumbnail.zip.  This is your Lambda function deployment package.
-* Note: Ensure CreateThumbnail.js is the root level of your zip file and not under a subdirectory.
+To build, run:
+```
+npm init  (Leave all defaults and Create package.json)
+npm install async gm --save
+```
 
 
 #### Create lambda function:
@@ -41,43 +35,39 @@ In AWS Console or CLI:
 * Create new lambda function:
 	* named: s3-resize-images 
 	* new execution role: lambda_s3_resize_images_execution
-* Upload package created above with 
+* Upload package with 
 	* Handler: CreateThumbnail.handler (note this is the name of the CreateThumbnail.js)
 
 
 #### Test your lambda function.  
-* Open the the lambda_source/test.json, and change all CHANGE_TO_SOURCE_BUCKETNAME to your bucket name (2 occurrences)
-* Create new lambda test with contents from test.json
-* Run Test
-* Although the test was run successfully, Read the Log Output from the test.  Notice it reads "AccessDenied: Access Denied"
+The lambda_source/test.json is a sample data set you can use for testing the lambda function.  You will need to modify the file and replace all CHANGE_TO_SOURCE_BUCKETNAME to your bucket name (2 occurrences)
+
+After running the test, make sure you read the log output.  It most likely did _not_ succeed.  Why?
 
 #### Add S3 Permissions to Lambda Role
-* Modify lambda_s3_resize_images_execution role and add AmazonS3FullAccess policy
-* Confirm the role has the policy name added by reviewing role details
+Modify lambda_s3_resize_images_execution role to have full S3 access to the resized bucket.
 
 #### Retest your lambda function.  
-* Rerun test on lambda.  Confirm it runs successfully
-* Check your resized s3 bucket and confirm resize-picture.jpg exists
+Rerun test and confirm it runs successfully by checking your resized s3 bucket
 
 
 
 ### Enable S3 Event notification:
-* In AWS Console, locate source bucket eg. 2017-pmacpherson-images
-* Click on bucket's Properties > Events > Add Notification
-	* Events: ObjectCreate
-	* Suffix: ".jpg" - Don't put "*.jpg"
-	* Send To: Lambda
-	* Lambda: TestS3Resize 
-		* If you only see Add Lambda ARN, and not your newly created lambda function, then ensure your S3 bucket and Lambda function are in the same region
+On the S3 source bucket, add an S3 Event notification (Properties > Events > Add Notification).  Set up an event that on ObjectCreate for all .jpg files, it will execute our new lambda function.
+
+If you only see Add Lambda ARN, and not a drop down of lambda function names, ensure your S3 bucket and Lambda function are in the same region
+
 * http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-configure-event-source.html
 
+#### Verify S3 Event Notifcation
+Test it out.  Upload assets to the source and see if they generate resized images in the resize bucket.
 
-### Verify S3 Event Notifcation
-* Upload new assets into source bucket
-* Verify new assets are copied and resized into resized bucket eg. 2017-pmacpherson-imagesresized
+### Experimentation
+What other interesting lambda's can you create using S3 Event notifications?
 
 ### Troubleshooting and Logs
-* View the logs for your lambda under Cloud Watch > Logs > s3-resize-images
+View the logs for your lambda under Cloud Watch > Logs > s3-resize-images
+
 
 
 ### Teardown

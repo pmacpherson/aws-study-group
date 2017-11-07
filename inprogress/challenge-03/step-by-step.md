@@ -1,7 +1,5 @@
-Challenge 03 - An Introduction to AWS Lambda
+Challenge 03 - An Introduction to AWS Lambda - Step by Step
 ==================
-
-Create hello world lamdba function with numerous versions and a "prod" alias.
 
 ### Create AWS Lambda function:
 * In AWS Console, Create new lambda function from scratch
@@ -73,18 +71,6 @@ In AWS Console:
 * Save and test
 * Read the Log Output from the test
 
-#### Add error handling
-* Add error handling to verify name and email exists
-* Return errors if they do not.
-* Test various cases and see if lambda execution handles them properly
-
-#### Publish new version of Lambda
-* Publish a new lambda version: v2
-
-#### View and test previous versions
-* Toggle the Versions: $Latest between V1, V2 and $Latest.
-* Run test on all of them
-
 #### Create Alias
 * Actions > Create Alias
 	* Name: prod
@@ -92,36 +78,4 @@ In AWS Console:
 	* Version: v1
 * Update Alias to $Latest
 * http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html
-
-### Teardown
-* Delete Lambda
-* Delete Cloudwatch Logs
-* Delete Role
-
-### Homework
-* Perform all the above with the CLI
-* http://docs.aws.amazon.com/cli/latest/reference/lambda/
-
-# Additional Resources
-* http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-upload-deployment-pkg.html
-
-
-### Challenge Difficulty 
-Skill | Use
----:|:---
-Beginner | Use AWS Console
-Intermediate | Use AWS CLI
-Advanced | Use AWS Cloudformation
-
-### Questions:
-
-* What is AWS Lambda?
-* What languages are supported by AWS Lambda?
-* What is the purpose of Handler for your lambda function?
-* What is the code structure of a node Lambda function?
-* What are the three variables: event, context, and callback used for?
-* What is a Version?  What is it's purpose?
-* What is an Alias?  What is it's purpose?
-
-
 

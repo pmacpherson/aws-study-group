@@ -4,35 +4,30 @@ Challenge 05 - An Introduction to Amazon DynamoDB and CloudWatch Events
 Create a lambda function that is executed every minute and writes an entry to a dynamodb table.
 
 ### Create AWS Lambda function:
-* Create new lambda function:
+Create new lambda function that spits out "Hello DynamoDB" to console:
 	* named: hello-dynamodb 
 	* new execution role: lambda_hello_dynamodb_execution
-* Upload package created above with:
-	* Handler: CreateThumbnail.handler (note this is the name of the CreateThumbnail.js)
-* Modify inline content and output "Hello DynamoDB" to the console.  eg console.log("Hello DynamoDB")
-* Test the lambda and review the logs and verify output is displayed
+
+Make sure to test the lambda and review the logs and verify output is displayed.
 
 ### Schedule Lambda Execution:
-* Add a new trigger on the lambda by creating a Cloudwatch Events that will execute every minute.
-* Review the execution logs for the lambda function under CloudWatch > Logs > hello-dynamodb
-* Confirm execution is happening every mintue
+Add a new trigger on the lambda that will execute every minute. 
 
+Review the execution logs for the lambda function under CloudWatch > Logs > hello-dynamodb
 
 ### Create DynamoDB Table
-* Create dynamo db table
-	 * Table Name: helloDynamo
-	 * Primary Key: date / number 
-			* This will be the primary key for the table.  Not ideal for production environments, but adequate for this challenge
-	 * Create the table 
-* Wait for table to be properly created and confirm schema structure contains one field named "date"
+Create a DynamoDB table:
+	* named "helloDynamo"
+	* primary key named date of datatype number
+
+This will be the primary key for the table.  Not ideal for production environments, but adequate for this challenge
+
+It may take a few moments before the table is fully created.
 
 ### Download Lambda Function:
-* Export the lambda function using Actions > Export Function 
-* Download Deployment package and save to your local environment
-* Unzip the file
+Export the lambda function using Actions > Export Function 
 
 ### Modify Lambda function
-* Open the index.js file locally
 ```
 const AWS = require('aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
@@ -53,29 +48,19 @@ exports.handler = (event, context, callback) => {
 	})
 };
 ```
-* Create new deployment zip package with index.js
-* Update the helloDynamo with the deployment package (either Console or CLI)
 
+### Update Lambda
+Create new deployment package and replace Lambda function using console or CLI.
 
 ### Test lambda function
-* Try testing lambda function.
-* Should receive error.  What is the error?
+Try testing lambda function.  Should receive error.  What is the error?
 
 ### Grant DynamoDB Access
-* Locate lambda role created above in IAM > Roles
-* Add inline policy
-	 * Policy Generator
-			* Effect: Allow
-			* AWS Service: Amazon DynamoDB
-			* Actions: All
-			* ARN: The ARN of the DynamoDB table created above (See this on the DynamoDB table details)
-		* Next and Apply
-		* Review newly generated policy on role
+Update the lambda role to have access to Amazon DynamoDB table
 
 ### Test lambda function
-* Try testing lambda function.
-* Should be successful
-* Check dynamodb to see newly generated records
+Re-test and confirm
+
 
 ### Teardown
 * Delete CloudWatch Event Rule

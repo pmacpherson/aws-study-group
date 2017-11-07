@@ -21,19 +21,20 @@ Create a new version of the lambda: Actions > Publish new Version
 Download and open the lambda function locally.  
 
 Actions > Export Function > Download Deployment Package
+
 * This is a zip file.  If your operating system does not recognize the file, simply add a .zip extension to the filename 
 * http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html
 
 
 #### Modify Lambda
-Assuming the event object will now recieve the following object:
+Assume the event variable will recieve the following object:
 ```
 {
     "name":"Patricia", 
     "email":"pmacpherson@klick.com"
 }
 ```
-Modify the index.js file to output name and email
+Modify the lambda function to output name and email to console
 
 #### Package and Upload Lambda function
 Archive files back into a new zip file. Ensure index.js is the root level of your zip file and not under a subdirectory.  Replace existing lambda by uploading new package from zip.
@@ -42,10 +43,11 @@ Archive files back into a new zip file. Ensure index.js is the root level of you
 Modify test event with new sample data
 
 #### Add error handling
-Add error handling to verify name and email exists.  Return errors if they do not.  Test various cases and see if lambda execution handles them properly
+Add error handling to verify name and email exists.  Return errors if they do not.  Test various success and failure cases and see if lambda execution handles them properly
 
 #### Publish new version of Lambda
 After each change, publish a new lambda version.  Learn how to toggle and test between newer and older versions.  Create an alias and point it various versions
+
 * http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html
 
 
