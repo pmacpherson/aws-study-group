@@ -5,6 +5,7 @@ Create a lambda function that is executed every minute and writes an entry to a 
 
 ### Create AWS Lambda function:
 Create new lambda function that spits out "Hello DynamoDB" to console:
+
 	* named: hello-dynamodb 
 	* new execution role: lambda_hello_dynamodb_execution
 
@@ -17,6 +18,7 @@ Review the execution logs for the lambda function under CloudWatch > Logs > hell
 
 ### Create DynamoDB Table
 Create a DynamoDB table:
+
 	* named "helloDynamo"
 	* primary key named date of datatype number
 
