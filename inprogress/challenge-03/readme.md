@@ -14,10 +14,10 @@ Configure a test event to trigger the lambda.
 * Read the Log Output from the test to confirm console output.
 * Look at logs under cloudwatch "Click here" link will take you there.  
 
-#### Publish version of Lambda
+### Publish version of Lambda
 Create a new version of the lambda: Actions > Publish new Version
 
-#### Download Lambda function
+### Download Lambda function
 Download and open the lambda function locally.  
 
 Actions > Export Function > Download Deployment Package
@@ -26,7 +26,7 @@ Actions > Export Function > Download Deployment Package
 * http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html
 
 
-#### Modify Lambda
+### Modify Lambda
 Assume the event variable will recieve the following object:
 ```
 {
@@ -42,10 +42,10 @@ Archive files back into a new zip file. Ensure index.js is the root level of you
 #### Test your lambda function.  
 Modify test event with new sample data
 
-#### Add error handling
+### Add error handling
 Add error handling to verify name and email exists.  Return errors if they do not.  Test various success and failure cases and see if lambda execution handles them properly
 
-#### Publish new version of Lambda
+### Publish new versions of Lambda
 After each change, publish a new lambda version.  Learn how to toggle and test between newer and older versions.  Create an alias and point it various versions
 
 * http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html

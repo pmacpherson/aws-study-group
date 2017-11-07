@@ -1,7 +1,7 @@
 Challenge 04 - Resizing images with S3 Events
 ==================
 
-#### Create lambda deployment package
+### Create lambda deployment package
 In lambda_source folder:
 
 * Run: npm init  (Leave all defaults and Create package.json)

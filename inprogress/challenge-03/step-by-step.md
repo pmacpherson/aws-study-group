@@ -13,7 +13,7 @@ Challenge 03 - An Introduction to AWS Lambda - Step by Step
 * Modify inline content to spit out console.log("Hello world")
 * Save
 
-#### Test your lambda function.  
+### Test your lambda function.  
 * Click "Select a test event" > Configure Test Events
 	* Create new test event
 	* Event Template: Hello World
@@ -27,12 +27,12 @@ Challenge 03 - An Introduction to AWS Lambda - Step by Step
 * Run test a few more times, confirm cloudwatch logs get updated. (Almost real time delivery)
 * Note, cloudwatch logs will also create new log files periodically under the log group
 
-#### Publish version of Lambda
+### Publish version of Lambda
 * Actions > Publish new Version
 	* Version description: v1
 
 
-#### Download Lambda function
+### Download Lambda function
 * Actions > Export Function > Download Deployment Package
 	* This is a zip file.  If your operating system does not recognize the file, simply add a .zip extension to the filename 
 	* Extract the file
@@ -41,7 +41,7 @@ Challenge 03 - An Introduction to AWS Lambda - Step by Step
 	* http://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html
 
 
-#### Modify And Package Lambda function
+### Modify And Package Lambda function
 * Modify the index.js file to contain the following lines:
 ```
    console.log("name = " + event.name);
@@ -51,7 +51,7 @@ Challenge 03 - An Introduction to AWS Lambda - Step by Step
 * Archive index.js back into a new zip file.
 * Note: Ensure index.js is the root level of your zip file and not under a subdirectory.
 
-#### Upload package
+### Upload package
 In AWS Console:
 
 * Upload package to the "hello-world" lambda 
@@ -60,7 +60,7 @@ In AWS Console:
 	* Handler: index.handler (note this is the name of the index.js)
 	* Save
 
-#### Test your lambda function.  
+### Test your lambda function.  
 * Edit the "test1" event changing the body to the following:
 ```
 {
@@ -71,7 +71,7 @@ In AWS Console:
 * Save and test
 * Read the Log Output from the test
 
-#### Create Alias
+### Create Alias
 * Actions > Create Alias
 	* Name: prod
 	* Description: production tag

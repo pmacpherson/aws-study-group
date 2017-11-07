@@ -52,14 +52,12 @@ exports.handler = (event, context, callback) => {
 ### Update Lambda
 Create new deployment package and replace Lambda function using console or CLI.
 
-### Test lambda function
 Try testing lambda function.  Should receive error.  What is the error?
 
 ### Grant DynamoDB Access
 Update the lambda role to have access to Amazon DynamoDB table
 
-### Test lambda function
-Re-test and confirm
+Re-test and confirm it's successful
 
 
 ### Teardown
