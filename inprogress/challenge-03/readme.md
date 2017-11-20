@@ -62,6 +62,7 @@ After each change, publish a new lambda version.  Learn how to toggle and test b
 
 # Additional Resources
 * http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-upload-deployment-pkg.html
+* https://www.youtube.com/watch?v=eOBq__h4OJ4
 
 
 ### Challenge Difficulty 
