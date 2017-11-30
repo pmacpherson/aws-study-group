@@ -64,6 +64,8 @@ Test it out.  Upload assets to the source and see if they generate resized image
 
 ### Experimentation
 What other interesting lambda's can you create using S3 Event notifications?
+- Write to DynamoDB for each uploaded object
+- Elastic Transcoding for videos
 
 ### Troubleshooting and Logs
 View the logs for your lambda under Cloud Watch > Logs > s3-resize-images
@@ -96,6 +98,7 @@ Advanced | Use AWS Cloudformation
 * What AWS Services can S3 events be sent to?
 * What is the payload format for the S3 event to lambda?
 * Besides resizing images, what are some other ideas for S3 Events?
+* What type of events can trigger Lambda?
 
 
 
