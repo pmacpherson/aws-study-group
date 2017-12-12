@@ -11,10 +11,12 @@ Create new lambda function:
 	* named: random-number 
 
 Create a new role from a template:
+
 	* On the new lambda screen, choose 
 		* Role: "Create new role from Template"
 		* Name: lambda_random_number_execution
 		* Policy Template: Simple Microservice permissions
+
 ```
 exports.handler = (event, context, callback) => {
     let min = 0;
@@ -37,6 +39,7 @@ Each time you run a test, the lamda should return a random number.
 
 ### Create Lambda Trigger to API Gateway:
 Create new lambda trigger with api gateway:
+
 	* API name: randomNumberMicroservice
 	* Deployment Stage: dev
 	* Security: Open
@@ -46,6 +49,7 @@ Ensure you save the lambda properly
 
 ### Review New API Gateway:
 Review the newly generated api gateway:
+
 	* API Gateway > APIs > randomNumberMicroservice
 		* Resources > /random-number > ANY 
 			* The ANY method means we can hit this api via any HTTP Resource, ie GET, POST etc
@@ -60,6 +64,7 @@ Review the newly generated api gateway:
 
 ### Deploy New Resource:
 Deploy our new resource:
+
 	* Resources > Get > Actions > Deploy API
 		* Deployment Stage: New Stage
 		* Stage Name: prod
@@ -95,6 +100,7 @@ exports.handler = (event, context, callback) => {
 
 ### Create Lambda Trigger to API Gateway:
 Create new lambda trigger with api gateway:
+
 	* API name: randomNumberMicroservice
 	* Deployment Stage: dev
 	* Security: Open
@@ -104,6 +110,7 @@ Again, Ensure you save the lambda properly
 
 ### Review New API Resource:
 Review the newly generated api resource:
+
 	* API Gateway > APIs > randomNumberMicroservice
 		* Resources > /add-number > ANY 
 			* Method Request: add x and y as required query string parameters
