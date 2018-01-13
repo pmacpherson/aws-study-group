@@ -4,7 +4,7 @@ const fs = require('fs');
 const app = express()
 
 // load configuration file
-const config = require("./config.json")
+const config = require("./config.js")
 
 
 // load aws credentials for local development only!
