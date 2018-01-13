@@ -27,7 +27,7 @@ Launch an ec2 instance as specified in challenge 08
 
 Setup the code in node-app/web.js.  However, this time do NOT use AWS Access Keys.  
 
-Create a new IAM role with appropriate permissions for IAM GetUser, and assign that to the EC2 Instance.
+Create a new IAM role with appropriate permissions for IAM ListUser, and assign that to the EC2 Instance.
 
 
 ### Teardown
@@ -37,7 +37,7 @@ Create a new IAM role with appropriate permissions for IAM GetUser, and assign t
 
 ### Resources
 * https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html
-* https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/IAM.html#getUser-property
+* https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/IAM.html#listUsers-property
 * https://github.com/aws-samples/aws-nodejs-sample
 
 

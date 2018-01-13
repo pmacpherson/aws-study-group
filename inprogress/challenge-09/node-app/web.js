@@ -18,37 +18,21 @@ if (pathAWSConfig!=null) {
 app.get('/', (req, res) => res.send('Hello World!'))
 
 
-// who am i
-app.get('/whoami', function (req, res) {
+// list users
+app.get('/users', function (req, res) {
 	// Create an IAM client
 	var iam = new AWS.IAM();
-	// If you do not specify a user name, IAM determines the user name 
-	// implicitly based on the AWS access key ID used to sign the 
-	// request to this API.
-	var params = {
-		UserName: null 
-	};
-	iam.getUser(params, function(err, data) {
+
+	var params = {};
+	iam.listUsers(params, function(err, data) {
 		if (err) {
 			console.log(err, err.stack); // an error occurred
 			res.send("There was an error");
 		}
 		else {
 			console.log(data);           // successful response
-			res.send("The current user was " + data.User.UserName);
+			res.send("Total number of users: " + data.Users.length);
 		}
-
-		/*
-		data = {
-		User: {
-			Arn: "arn:aws:iam::123456789012:user/Bob", 
-			CreateDate: <Date Representation>, 
-			Path: "/", 
-			UserId: "AKIAIOSFODNN7EXAMPLE", 
-			UserName: "Bob"
-		}
-		}
-		*/
 	});
 })
 
