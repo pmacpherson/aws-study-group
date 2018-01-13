@@ -1,0 +1,6 @@
+{
+	// for local development, update path to aws.json 
+	// "aws": "./aws.json"
+	// for production development, do not use aws.json or AWS Access keys!
+	"aws": null 
+}
