@@ -71,7 +71,7 @@ We'll be launching an ec2 instance associated with the free tier.  Amazon provid
 
 #### Install Node on EC2 Instance
 * Checkout the git repo: git clone https://github.com/KlickInc/aws-study-group.git
-* cd ./aws-study-group/inprogress/challenge-08/node-app
+* cd ./aws-study-group/challenge-08/node-app
 * ./install-node.sh
 * npm -v (Confirm NPM is installed at version 3+)
 * npm init (leave all the prompts as, and like the lambda challenges, a package.json file should be created)
