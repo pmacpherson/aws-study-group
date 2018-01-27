@@ -1,64 +1,52 @@
-Challenge 10 - Cloudformation
+Challenge 10 - EC2 - Guestbook Application
 ==================
 
-An introduction to cloudformation to create and manage aws resources.
+Create a guestbook application.
 
-With each step, read the script prior to running it.  See if you can guess what will happen.
+Reuse your code from challenge 07.  If you have not done challenge 07, you can start from scratch.  There's a skeleton application under node-app.
 
-
-### Run script1.yaml
-
-* Create a cloudformation stack using script1.yaml.  
-* Examine Events and Resources tab
-* What is the name of your S3 bucket?  Why is it this name?
-* Manually upload some files into the S3 bucket.
-* Delete the cloudformation stack.  What happen?
-* Delete the assets in the S3 bucket, then delete the cloudformation stack.  What happen?
+* Optional - explore the SDK and choose your own application.
 
 
-### Run script2.yaml
+### Guestbook Application - Local Environment
 
-* Re-Run script1.yaml
-* Update the stack using script2.yaml
-* Manually upload some files into the S3 bucket.
-* Delete the cloudformation stack.
-* What happen to the S3 bucket and all your files?
-* What is the difference between script1 and script2?
-* What does DeletionPolicy do?
-* https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html
+Using everything we've learned so far, create a node application that displays a guestbook application.  
 
+This application has two features:
 
-### Run script3.yaml
+1) A page that display an html form that allows you to enter your name, email, and a message.  Submitting the form will post to the node application and save the guestbook entry inside a dynamodb table.
 
-* Re-Run script1.yaml
-* Update the stack using script3.yaml
-* Examine Events, Resources and Outputs tab
-* What does !Ref do?
-* What does !GetAtt do?
-* What does !Join do?
-* https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+2) A page that will list all the existing guestbook entries, displaying the name/email/message of previous entries.
 
 
-### Create script4.yaml
 
-Using script3 as a base, create a new cloudformation script that will prompt the user for a "Bucket Name" and create an S3 bucket with this parameter.
+### Guestbook Application - EC2 Environment
+
+Deploy your local application onto EC2.  
+
+1) The easiest way is to create your own git repo (don't commit your aws access keys), and check out your application onto the ec2 instance.
+
+2) Zip up your application into an s3 bucket and on the ec2 instance use the CLI to download
+
+3) Manually copy the files using an SCP client
 
 
-### Questions:
-* What is cloudformation?
-* What are the two formats for a cloudformation template?
+### Optional - Explore Userdata when initialising EC2 instance
 
-
-### Teardown
-* Delete Cloudformation Stack
-* Ensure all other resources are deleted
+When creating an EC2 instance, configure UserData with commands to download/install your application.  Similar to what you manually did in challenge-09
 
 
 ### Resources
-* https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-reference.html
-* https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
-* https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html
+* https://aws.amazon.com/sdk-for-node-js/
+* https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-started-nodejs.html
+* https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/index.html
+* https://medium.com/@suthagar23/getting-started-with-aws-javascript-sdk-a5f722e9539a
 
+
+### Teardown
+* Delete EC2
+* Delete DynamoDB
 
 
 ### Challenge Difficulty 
@@ -67,6 +55,12 @@ Skill | Use
 Beginner | Use AWS Console
 Intermediate | Use AWS CLI
 Advanced | Use AWS Cloudformation
+
+
+
+
+
+
 
 
 
