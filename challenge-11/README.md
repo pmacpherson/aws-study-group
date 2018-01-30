@@ -46,7 +46,9 @@ Create a 100% servereless solution for a static website that can handle secure f
 
 ### Teardown
 
-`sls remove`
+1. Use the AWS console to emtpy your website bucket. 
+
+2. `sls remove`
 
 ### Questions
 
