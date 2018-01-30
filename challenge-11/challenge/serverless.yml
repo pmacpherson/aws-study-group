@@ -6,9 +6,6 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   stackname: ${self:service}-${self:custom.stage}
   tablePrefix: '${self:custom.stackname}-*'
-  scriptHooks:
-    after:deploy:deploy:
-      - ./scripts/deploy_static_files.sh ${self:custom.stackname}
 
 provider:
   name: aws
@@ -58,6 +55,3 @@ resources:
     # Cloudformation Resource Templates go here
   Outputs:
     # Cloudformation Outputs go here
-
-plugins:
-  - serverless-scriptable-plugin
