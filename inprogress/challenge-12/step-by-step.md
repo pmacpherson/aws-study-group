@@ -1,4 +1,4 @@
-Challenge 10 - Cloudformation
+Challenge 12 - Cloudformation
 ==================
 
 An introduction to cloudformation to create and manage aws resources
